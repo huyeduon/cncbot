@@ -60,12 +60,10 @@ def run_bot(bot_url):
     aws_c8k_admin = os.getenv("aws_c8k_admin")
     aws_c8k_pass =os.getenv("aws_c8k_pass")
    
-    
     # AWS Instance ID:
     cnc_instance_id = os.getenv("cnc_instance_id")
     c8k1_instance_id = os.getenv("c8k1_instance_id")
     c8k2_instance_id = os.getenv("c8k2_instance_id")
-
 
     # Azure VM Name:
     # place holder
@@ -111,6 +109,7 @@ def run_bot(bot_url):
     azurecnc_version = os.getenv("azurecnc_version")
 
     # Create a Bot Object
+    print(bot_app_name)
     bot = TeamsBot(
         bot_app_name,
         teams_bot_token=teams_token,
@@ -227,7 +226,7 @@ def run_bot(bot_url):
     bot.run(host="0.0.0.0", port=5000)
 
 def main():
-    bot_url = "http://172.183.51.157:5000"
+    bot_url = os.getenv("bot_url")
     run_bot(bot_url)
 if __name__ == "__main__":
     main()
